@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+nav {
+    overflow: hidden;
+}
+
+.treino {
+    float: left;
+    margin: 12px;
+    width: 100px;
+    height: 90px;
+}
+
+.navbar-opcoes {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: right;
+    background-color: #14213D;
+}
+
+.navbar-opcoes li {
+    display: inline-block;
+    font-size: 30px;
+}
+
+.navbar-opcoes li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .treino {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+
+    .treino {
+        display: none;
+        /* Esconde a lista de navegação em telas menores */
+        width: 100%;
+    }
+
+    .navbar-opcoes.responsive {
+        display: block;
+        /* Exibe a lista de navegação quando o ícone do nav.navbar-opcoes é clicado */
+    }
+
+    .navbar-opcoes.responsive li {
+        display: block;
+        /* Ajusta os itens da lista para empilhar verticalmente */
+        text-align: center;
+    }
+}
+
+/* Estilo do botão dropdown */
+.dropbtn {
+    background-color: #FCA311;
+    font-size: 25px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+}
+
+.droplis {
+    color: white;
+    background-color: #FCA311;
+    font-size: 25px;
+    border-radius: 10px;
+    height: 38px;
+    width: 98px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Contêiner do dropdown */
+.dropdown {
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #FCA311;
+    color: white;
+    padding: 16px;
+    font-size: 25px;
+    border: none;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #14213D;
+    min-width: 167px;
+    box-shadow: 0px 5px 5px 0px rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.dropdown-content a {
+    color: white !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #FCA311;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown .dropbtn:focus {
+    outline: none;
+}

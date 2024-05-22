@@ -1,0 +1,46 @@
+.welcome {
+    display: flex;
+}
+
+.welcome-container > h1 {
+    color: #FCA311;
+}
+
+.welcome-container > p {
+    font-size: 25px;
+    color: #000;
+}
+
+.peso {
+    width: 50vw;
+    height: 83vh;
+
+}
+
+.botao-2 {
+    background-color: #FCA311;
+    background-color: #FCA311;
+    margin: 20px;
+    width: 150px;
+    height: 30px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.3em;
+}
+
+.imagem-responsiva {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 990px) {
+    .peso {
+        display: none; /* Esconde a lista de navegação em telas menores */
+        width: 100%;
+    }
+    .navbar-opcoes.responsive {
+        display: block; /* Exibe a lista de navegação quando o ícone do nav.navbar-opcoes é clicado */
+    }
+
+}
