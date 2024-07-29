@@ -1,46 +1,45 @@
-.welcome {
-    display: flex;
-}
-
-.welcome-container > h1 {
-    color: #FCA311;
-}
-
-.welcome-container > p {
-    font-size: 25px;
-    color: #000;
-}
-
-.peso {
-    width: 50vw;
-    height: 83vh;
-
-}
-
-.botao-2 {
-    background-color: #FCA311;
-    background-color: #FCA311;
-    margin: 20px;
-    width: 150px;
-    height: 30px;
-    border: 1px solid transparent;
-    border-radius: 10px;
+/* Welcome.css */
+.custom-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
     cursor: pointer;
-    font-size: 1.3em;
+    z-index: 1000; /* Certifique-se de que o z-index seja alto */
+    position: absolute; /* Necessário para o posicionamento correto */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.imagem-responsiva {
-    max-width: 100%;
-    height: auto;
+
+/* Assegura que o contêiner principal posicione as setas corretamente */
+.welcome {
+    position: relative;
 }
 
-@media screen and (max-width: 990px) {
-    .peso {
-        display: none; /* Esconde a lista de navegação em telas menores */
-        width: 100%;
-    }
-    .navbar-opcoes.responsive {
-        display: block; /* Exibe a lista de navegação quando o ícone do nav.navbar-opcoes é clicado */
-    }
-
+.carousel {
+    height: 620px;
 }
+
+.legend {
+    background-color: transparent !important;
+}
+
+.custom-prev {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100px;
+}
+
+.custom-next {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100px;
+}
+

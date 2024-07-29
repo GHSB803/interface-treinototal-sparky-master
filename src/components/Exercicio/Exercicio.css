@@ -55,15 +55,10 @@
     margin-top: 10px;
 }
 
-.left {
+.right {
     display: flex;
 }
 
 label a {
     text-decoration: none;
-}
-
-.cp {
-    font-family: system-ui !important;
-    background-color: gray;
 }

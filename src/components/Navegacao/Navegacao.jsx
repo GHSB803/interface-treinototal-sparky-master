@@ -10,11 +10,11 @@ function Navegacao() {
                 <li><Link style={{color: "#fff"}} to="/">Home</Link></li> {/* Renderiza um link para a página Home */}
                 <li className="dropdown"> {/* Define um item de lista para o dropdown */}
                     <span className="droplis">Listas</span> {/* Define o botão do dropdown */}
-                    <div className="dropdown-content" style={{minWidth: "98px"}}> {/* Define o conteúdo do dropdown */}
-                        <Link style={{color: "#000"}} to="/loginaluno">Aluno</Link> {/* Link para a página de cadastro */}
-                        <Link style={{color: "#000"}} to="/loginprofessor">Professor</Link> {/* Link para a página de login */}
-                        <Link style={{color: "#000"}} to="/aparelho">Aparelho</Link> {/* Link para a página de aparelho */}
-                        <Link style={{color: "#000"}} to="/exercicio">Exercício</Link> {/* Link para a página de aparelho */}
+                    <div className="dropdown-content" style={{minWidth: "116px"}}> {/* Define o conteúdo do dropdown */}
+                        <Link style={{color: "#000"}} to="/listaAluno">Aluno</Link> {/* Link para a página de cadastro */}
+                        <Link style={{color: "#000"}} to="/listaProfessor">Professor</Link> {/* Link para a página de login */}
+                        <Link style={{color: "#000"}} to="/listaAparelho">Aparelho</Link> {/* Link para a página de aparelho */}
+                        <Link style={{color: "#000"}} to="/listaExercicio">Exercício</Link> {/* Link para a página de aparelho */}
                     </div>
                 </li>
                 <li><Link style={{color: "#fff"}} to="/assinatura">Planos</Link></li> {/* Renderiza um link para a página Planos */}

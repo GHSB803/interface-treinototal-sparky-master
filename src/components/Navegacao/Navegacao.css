@@ -6,9 +6,9 @@ nav {
 
 .treino {
     float: left;
-    margin: 12px;
-    width: 100px;
-    height: 90px;
+    margin: 16px;
+    width: 70px;
+    height: 60px;
 }
 
 .navbar-opcoes {
@@ -22,14 +22,14 @@ nav {
 
 .navbar-opcoes li {
     display: inline-block;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .navbar-opcoes li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 10px 16px;
+    padding: 10px 15px;
     text-decoration: none;
 }
 
@@ -71,12 +71,11 @@ nav {
 }
 
 .droplis {
-    color: white;
     background-color: #FCA311;
     font-size: 25px;
     border-radius: 10px;
     height: 38px;
-    width: 98px;
+    width: 90px;
     border: none;
     cursor: pointer;
 }
@@ -86,10 +85,10 @@ nav {
     display: inline-block;
 }
 
-.dropbtn {
+.dropbtn, .droplis {
     background-color: #FCA311;
     color: white;
-    padding: 16px;
+    padding: 13px;
     font-size: 25px;
     border: none;
 
@@ -119,6 +118,7 @@ nav {
 }
 
 .dropdown:hover .dropdown-content {
+    margin-top: 1px;
     display: block;
 }
 

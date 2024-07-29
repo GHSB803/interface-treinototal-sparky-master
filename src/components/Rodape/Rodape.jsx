@@ -9,7 +9,7 @@ function Rodape() {
         <div className='rodape'> {/* Define uma div com a classe "rodape" */}
             <div className='container-rodape'> {/* Define uma div com a classe "container-rodape" */}
             <img src={gojo} alt="gojo" className='gojo' style={{paddingLeft: ""}}/>
-                <h1 className='h1-frase'>"Persista hoje, conquiste amanhã!"</h1> {/* Renderiza um título com a frase */}
+                <h1 className='h1-frase'>Persista hoje, conquiste amanhã!</h1> {/* Renderiza um título com a frase */}
                 <Link to="/loginprofessor" style={{ fontSize: "30px", fontWeight: 'bold', border: "none", background: "none", cursor: "pointer", color: "#13213d", textDecoration: "underline" }}>Trabalhe Conosco</Link> {/* Renderiza um link para a página de login */}
                 <h1>Endereço</h1> {/* Renderiza um título "Endereço" */}
                 <p className='p-rodape'>C. 6 958, La Plata, Provincia de Buenos Aires, Argentina</p> {/* Renderiza um parágrafo com o endereço */}

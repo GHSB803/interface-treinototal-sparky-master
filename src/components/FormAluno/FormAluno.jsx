@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import bg2 from '../../assets/bg2.png';
+import AlunoRequests from '../../fetch/AlunoRequests';
 
 function FormAluno() {
 
     const [alunoData, setAlunoData] = useState({
         nome: '',
         email: '',
-        telefone: '',
-        datanascimento: '',
+        celular: '',
+        data_nascimento: '',
         endereco: '',
         cpf: '',
         senha: '',
         altura: '',
         peso: '',
-        IMC: ''
+        imc: ''
     });
 
     const handleChange = (e) => {
@@ -26,10 +27,13 @@ function FormAluno() {
     };
 
     // Função para lidar com o envio do formulário
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Evita o recarregamento da página
-        // Envia os dados do formulário para o servidor
-        console.log(JSON.stringify(alunoData));
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if(await AlunoRequests.cadastrarAluno(alunoData)) {
+            window.alert("Informações enviadas com sucesso")
+        }else {
+            window.alert("Erro ao enviar formulário")
+        }
     };
 
     return (
@@ -76,14 +80,12 @@ function FormAluno() {
                         </div>
                         <div className='input-field'>
                             <input
-                                type="tel"
+                                type="number"
                                 className='input'
-                                name='telefone'
-                                value={alunoData.telefone}
+                                name='celular'
+                                value={alunoData.celular}
                                 onChange={handleChange}
                                 placeholder='Telefone'
-                                pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})"
-                                title="Número de telefone precisa ser no formato (xx) xxxx-xxxx"
                                 required
                             />
                         </div>
@@ -91,8 +93,8 @@ function FormAluno() {
                             <input
                                 type="date"
                                 className='input'
-                                name='datanascimento'
-                                value={alunoData.datanascimento}
+                                name='data_nascimento'
+                                value={alunoData.data_nascimento}
                                 onChange={handleChange}
                                 placeholder='Data de Nascimento'
                                 required
@@ -157,8 +159,8 @@ function FormAluno() {
                             <input
                                 type="number"
                                 className='input'
-                                name='IMC'
-                                value={alunoData.IMC}
+                                name='imc'
+                                value={alunoData.imc}
                                 onChange={handleChange}
                                 placeholder='IMC'
                                 required

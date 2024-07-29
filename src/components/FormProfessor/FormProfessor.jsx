@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import bg1 from '../../assets/bg2.png';
+import ProfessorRequests from '../../fetch/ProfessorRequests';
 
 function FormProfessor() {  
 
     const [professorData, setProfessorData] = useState({
-        professor_id: '',
-        especialidade: '',
-        formacao: '',
-        data_contrato: '',
+        //nome, cpf, data_nascimento, celular, endereco, email, senha, Data_contratacao, formacao, especialidade
         nome: '',
-        data_nascimento: '',
         cpf: '',
-        telefone: '',
+        data_nascimento: '',
+        celular: '',
         endereco: '',
-        senha: '',
-        email: ''
+        email: '',
+        senha: '',  
+        data_contratacao: '',
+        especialidade: '',
+        formacao: ''
     });
+
+    // Função para lidar com o envio do formulário
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Evita o recarregamento da página
+        // Envia os dados do formulário para o servidor
+        if(ProfessorRequests.cadastrarProfessor(professorData)) {
+            window.alert(`Informações enviadas com sucesso!`)
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,13 +34,6 @@ function FormProfessor() {
             ...prevState,
             [name]: value
         }));
-    };
-
-    // Função para lidar com o envio do formulário
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Evita o recarregamento da página
-        // Envia os dados do formulário para o servidor
-        console.log(JSON.stringify(professorData));
     };
 
     return (
@@ -64,27 +67,39 @@ function FormProfessor() {
                                 required
                             />
                         </div>
+
+
                         <div className='input-field'>
                             <input
-                                type="email"
+                                type="text"
                                 className='input'
-                                name='email'
-                                value={professorData.email}
+                                name='cpf'
+                                value={professorData.cpf}
                                 onChange={handleChange}
-                                placeholder='E-mail'
+                                placeholder='CPF'
                                 required
                             />
                         </div>
                         <div className='input-field'>
                             <input
+                                type="date"
+                                className='input'
+                                name='data_nascimento'
+                                value={professorData.data_nascimento}
+                                onChange={handleChange}
+                                placeholder='Data de Nascimento'
+                                required
+                            />
+                        </div>
+
+                        <div className='input-field'>
+                            <input
                                 type="tel"
                                 className='input'
-                                name='telefone'
-                                value={professorData.telefone}
+                                name='celular'
+                                value={professorData.celular}
                                 onChange={handleChange}
                                 placeholder='Telefone'
-                                pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})"
-                                title="Número de telefone precisa ser no formato (xx) xxxx-xxxx"
                                 required
                             />
                         </div>
@@ -101,12 +116,12 @@ function FormProfessor() {
                         </div>
                         <div className='input-field'>
                             <input
-                                type="text"
+                                type="email"
                                 className='input'
-                                name='cpf'
-                                value={professorData.cpf}
+                                name='email'
+                                value={professorData.email}
                                 onChange={handleChange}
-                                placeholder='CPF'
+                                placeholder='E-mail'
                                 required
                             />
                         </div>
@@ -121,12 +136,13 @@ function FormProfessor() {
                                 required
                             />
                         </div>
+                        
                         <div className='input-field'>
                             <input
                                 type="date"
                                 className='input'
-                                name='datacontratacao'
-                                value={professorData.datacontratacao}
+                                name='data_contratacao'
+                                value={professorData.data_contratacao}
                                 onChange={handleChange}
                                 placeholder='Data de Contratação'
                                 required

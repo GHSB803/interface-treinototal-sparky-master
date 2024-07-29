@@ -2,32 +2,29 @@ import './Aparelho.css';
 import React, { useState } from 'react';
 import bg1 from '../../assets/bg1.png';
 import { Link } from 'react-router-dom';
+import AparelhoRequests from '../../fetch/AparelhoRequests';
 
-function Aparelho() {
-    const [showRegister, setShowRegister] = useState(false);
-    const [formData, setFormData] = useState({
-        emailProfessor: '',
-        senha: '',
-        nomeAparelho: '',
-        musculoAtivado: ''
+function cadastrarAparelho() {
+    const [aparelhoData, setAparelhoData] = useState({
+        nome_aparelho: '',
+        musculo_ativado: ''
     });
-
-    const handleToggleRegister = () => {
-        setShowRegister(!showRegister);
-    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
+        setAparelhoData(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Aqui você pode enviar os dados para o banco de dados
-        console.log('Dados enviados:', formData);
+    // Função para lidar com o envio do formulário
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Evita o recarregamento da página
+        // Envia os dados do formulário para o servidor
+        if (await AparelhoRequests.cadastrarAparelho(aparelhoData)) {
+            window.alert(`Informações enviadas com sucesso!`)
+        }
     };
 
     return (
@@ -45,58 +42,40 @@ function Aparelho() {
         }}>
             <div className='container'>
                 <div className='top-header'>
-                    <span>ProSaúde</span>
-                    <header>{showRegister ? 'Cadastro Aparelho' : 'Sessão Aparelho'}</header>
+                    <header style={{ fontSize: "20px" }}>Cadastro Aparelho</header>
                 </div>
-
-                {!showRegister ? (
-                    <>
-                        <form onSubmit={handleSubmit}>
-                            <div className='input-field'>
-                                <input type="text" className='input' placeholder='E-mail Professor' name='emailProfessor' value={formData.emailProfessor} onChange={handleChange} required />
-                                <i className='bx bx-user'></i>
-                            </div>
-                            <div className='input-field'>
-                                <input type="password" className='input' placeholder='Senha' name='senha' value={formData.senha} onChange={handleChange} required />
-                                <i className='bx bx-lock'></i>
-                            </div>
-                        </form>                            
-                        <div className='below'>
-                            <div className='input-field'>
-                                <input onClick={handleToggleRegister} type="submit" className='submit' value='Cadastrar' />
-                            </div>
+                <>
+                    <form onSubmit={handleSubmit}>
+                    <div className='input-field'>
+                            <input type="text" 
+                            className='input' 
+                            placeholder='Nome Aparelho' 
+                            name='nome_aparelho' 
+                            value={aparelhoData.nome_aparelho} 
+                            onChange={handleChange} required />
+                            <i className='bx bx-user'></i>
+                        </div>
+                        <div className='input-field'>
+                            <input type="text" 
+                            className='input' 
+                            placeholder='Músculo Ativado' 
+                            name='musculo_ativado' value={aparelhoData.musculo_ativado} 
+                            onChange={handleChange} required />
+                            <i className='bx bx-muscle'></i>
+                        </div>
+                        <div className='input-'>
+                            <input type="submit" className='submit' value='Cadastrar' />
                         </div>
                         <div className='bottom'>
-                            <div className='left'>
+                            <div className='right'>
                                 <label><Link to="/">Página Inicial</Link></label>
                             </div>
                         </div>
-                    </>
-                ) : (
-                    <>
-                        <form onSubmit={handleSubmit}>
-                            <div className='input-field'>
-                                <input type="text" className='input' placeholder='Nome Aparelho' name='nomeAparelho' value={formData.nomeAparelho} onChange={handleChange} required />
-                                <i className='bx bx-user'></i>
-                            </div>
-                            <div className='input-field'>
-                                <input type="text" className='input' placeholder='Músculo Ativado' name='musculoAtivado' value={formData.musculoAtivado} onChange={handleChange} required />
-                                <i className='bx bx-muscle'></i>
-                            </div>
-                            <div className='input-'>
-                                <input type="submit" className='submit' value='Cadastrar' />
-                            </div>
-                            <div className='bottom'>
-                            <div className='left'>
-                                <label><Link onClick={handleToggleRegister}>Voltar</Link></label>
-                            </div>
-                        </div>
-                        </form>
-                    </>
-                )}
+                    </form>
+                </>
             </div>
         </div>
     );
 }
 
-export default Aparelho;
+export default cadastrarAparelho;

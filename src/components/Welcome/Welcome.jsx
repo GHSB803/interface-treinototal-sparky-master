@@ -1,19 +1,49 @@
+import React from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Importa o CSS do carrossel
 import './Welcome.css'; // Importa um arquivo CSS para estilizar o componente.
-import peso from '../../assets/peso.jpeg'; // Importa a imagem de fundo.
-import { Link } from 'react-router-dom'; // Importa o componente Link do React Router para criar links entre páginas.
-
+import gym1 from '../../assets/gym1.jpg';
+import gym2 from '../../assets/gym2.jpg';
+import gym3 from '../../assets/gym3.jpg'
 function Welcome() {
-    return (
-        <div className="welcome"> {/* Define uma div com a classe "welcome" */}
-            <img src={peso} alt="apresentacao-gym" className='peso' /> {/* Renderiza a imagem de fundo */}
+    // Função para renderizar a seta anterior
+    const renderArrowPrev = (onClickHandler, hasPrev, label) =>
+        hasPrev && (
+            <button type="button" onClick={onClickHandler} title={label} className="custom-arrow custom-prev">
+                &lt; {/* Ícone ou texto da seta anterior */}
+            </button>
+        );
 
-            <div className="welcome-container"> {/* Define uma div com a classe "welcome-container" */}
-                <h1>COMECE</h1> {/* Renderiza um título "COMECE" */}
-                <h1>AGORA</h1> {/* Renderiza um título "AGORA" */}
-                <p>Vem com tudo, parceiro! Na academia Treino Total, cada suor é um degrau a mais rumo ao seu melhor shape.
-                    Vamos conquistar esses ganhos juntos, nessa jornada de superação e determinação!</p> {/* Renderiza um parágrafo com o texto */}
-                <button className='botao-2'><Link to='/assinatura' style={{color: 'white'}}>Conheça Já</Link></button> {/* Renderiza um botão com o texto "Conheça Já" */}
-            </div>
+    // Função para renderizar a seta próxima
+    const renderArrowNext = (onClickHandler, hasNext, label) =>
+        hasNext && (
+            <button type="button" onClick={onClickHandler} title={label} className="custom-arrow custom-next">
+                &gt; {/* Ícone ou texto da seta próxima */}
+            </button>
+        );
+
+    return (
+        <div className="welcome">
+            <Carousel showThumbs={false}
+                autoPlay={true}
+                infiniteLoop={true}
+                showStatus={false}
+                renderArrowPrev={renderArrowPrev}
+                renderArrowNext={renderArrowNext}
+            >
+                <div>
+                    <img src={gym1} alt="Imagem 1" className='carousel' />
+                    <h1 className='legend'>imagem 1</h1>
+                </div>
+                <div>
+                    <img src={gym2} alt="Imagem 2" className='carousel' />
+                    <p className="legend">Legenda para a Imagem 2</p>
+                </div>
+                <div>
+                    <img src={gym3} alt="Imagem 3" className='carousel' />
+                    <p className="legend">Legenda para a Imagem 3</p>
+                </div>
+            </Carousel>
         </div>
     );
 }

@@ -2,164 +2,118 @@ import './Exercicio.css';
 import React, { useState } from 'react';
 import bg1 from '../../assets/bg1.png';
 import { Link } from 'react-router-dom';
+import ExercicioRequests from '../../fetch/ExercicioRequests';
 
 function Exercicio() {
-    const [showRegister, setShowRegister] = useState(false);
-    const [formData, setFormData] = useState({
-        emailProfessor: '',
-        senha: '',
-        idAparelho: '',
-        nomeExercicio: '',
-        cargaUtilizada: '',
-        numeroRepeticoes: '',
-        regiaoAtivada: ''
+    const [formData, setExercicioData] = useState({
+        id_aparelho: '',
+        exercicio: '',
+        carga: '',
+        repeticoes: '',
+        regiao_corpo_ativa: ''
     });
-
-    const handleToggleRegister = () => {
-        setShowRegister(!showRegister);
-    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevState => ({
+        setExercicioData(prevState => ({
             ...prevState,
             [name]: value
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aqui você pode enviar os dados para o banco de dados
-        console.log('Dados enviados:', formData);
+        if (await ExercicioRequests.cadastrarExercicio(formData)) {
+            window.alert(`Informações enviadas com sucesso!`);
+        }
     };
 
     return (
-
-            <div className='box' style={{
-                backgroundImage: `url(${bg1})`,
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundAttachment: 'fixed',
-                width: '100%',
-                height: '100vh',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-                <div className='container'>
-                    <div className='top-header'>
-                        <span>ProSaúde</span>
-                        <header>{showRegister ? 'Cadastro Exercício' : 'Sessão Exercício'}</header>
-                    </div>
-
-                    {!showRegister ? (
-                        <>
-                            <form onSubmit={handleSubmit}>
-
-                                <div className='input-field'>
-                                    <input
-                                        type="text"
-                                        className='input'
-                                        name='emailProfessor'
-                                        value={formData.emailProfessor}
-                                        onChange={handleChange}
-                                        placeholder='E-mail Professor'
-                                        required
-                                    />
-                                </div>
-                                <div className='input-field'>
-                                    <input
-                                        type="password"
-                                        className='input'
-                                        name='senha'
-                                        value={formData.senha}
-                                        onChange={handleChange}
-                                        placeholder='Senha'
-                                        required
-                                    />
-                                </div>
-                                <div className='input-field'>
-                                    <input onClick={handleToggleRegister} type="submit" className='submit' value='Cadastrar' />
-                                </div>
-                                <div className='bottom'>
-                                    <div className='right'>
-                                        <label><Link to="/">Página Inicial</Link></label>
-                                    </div>
-                                </div>
-                            </form>
-                        </>
-                    ) : (
-                        <>
-                            <form>
-                                <div className='input-field'>
-                                    <input
-                                        type="text"
-                                        className='input'
-                                        name='idAparelho'
-                                        value={formData.idAparelho}
-                                        onChange={handleChange}
-                                        placeholder='id Aparelho utilizado'
-                                        required
-                                    />
-                                </div>
-                                <div className='input-field'>
-                                    <input
-                                        type="text"
-                                        className='input'
-                                        name='nomeExercicio'
-                                        value={formData.nomeExercicio}
-                                        onChange={handleChange}
-                                        placeholder='Nome Exercício'
-                                        required
-                                    />
-                                </div>
-                                <div className='input-field'>
-                                    <input
-                                        type="text"
-                                        className='input'
-                                        name='cargaUtilizada'
-                                        value={formData.cargaUtilizada}
-                                        onChange={handleChange}
-                                        placeholder='Carga utilizada'
-                                        required
-                                    />
-                                </div>
-                                <div className='input-field'>
-                                    <input
-                                        type="text"
-                                        className='input'
-                                        name='numeroRepeticoes'
-                                        value={formData.numeroRepeticoes}
-                                        onChange={handleChange}
-                                        placeholder='Número Repetições'
-                                        required
-                                    />
-                                </div>
-                                <div className='input-field'>
-                                    <input
-                                        type="text"
-                                        className='input'
-                                        name='regiaoAtivada'
-                                        value={formData.regiaoAtivada}
-                                        onChange={handleChange}
-                                        placeholder='Região ativada'
-                                        required
-                                    />
-                                </div>
-                                <div className='input-field'>
-                                    <input type="submit" className='submit' value='Cadastrar' />
-                                </div>
-                                <div className='bottom'>
-                                    <div className='left'>
-                                        <label><Link onClick={handleToggleRegister}>Voltar</Link></label>
-                                    </div>
-                                </div>
-                            </form>
-                        </>
-                    )}
+        <div className='box' style={{
+            backgroundImage: `url(${bg1})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+            width: '100%',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}>
+            <div className='container'>
+                <div className='top-header'>
+                    <header style={{ fontSize: "20px" }}>Cadastro Exercício</header>
                 </div>
+                <>
+                    <form onSubmit={handleSubmit}>
+                        <div className='input-field'>
+                            <input
+                                type="number"
+                                className='input'
+                                name='id_aparelho'
+                                value={formData.id_aparelho}
+                                onChange={handleChange}
+                                placeholder='id Aparelho'
+                                required
+                            />
+                        </div>
+                        <div className='input-field'>
+                            <input
+                                type="text"
+                                className='input'
+                                name='exercicio'
+                                value={formData.exercicio}
+                                onChange={handleChange}
+                                placeholder='Nome Exercício'
+                                required
+                            />
+                        </div>
+                        <div className='input-field'>
+                            <input
+                                type="number"
+                                className='input'
+                                name='carga'
+                                value={formData.carga}
+                                onChange={handleChange}
+                                placeholder='Carga utilizada'
+                                required
+                            />
+                        </div>
+                        <div className='input-field'>
+                            <input
+                                type="number"
+                                className='input'
+                                name='repeticoes'
+                                value={formData.repeticoes}
+                                onChange={handleChange}
+                                placeholder='Número Repetições'
+                                required
+                            />
+                        </div>
+                        <div className='input-field'>
+                            <input
+                                type="text"
+                                className='input'
+                                name='regiao_corpo_ativa'
+                                value={formData.regiao_corpo_ativa}
+                                onChange={handleChange}
+                                placeholder='Região ativada'
+                                required
+                            />
+                        </div>
+                        <div className='input-field'>
+                            <input type="submit" className='submit' value='Cadastrar' />
+                        </div>
+                        <div className='bottom'>
+                            <div className='right'>
+                                <label><Link to="/">Página Inicial</Link></label>
+                            </div>
+                        </div>
+                    </form>
+                </>
             </div>
+        </div>
     );
 }
 
