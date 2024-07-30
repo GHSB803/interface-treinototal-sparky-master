@@ -51,7 +51,7 @@
     position: relative;
     height: 500px;
     background: 
-        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.999) 2%, transparent 5%) 0 0 / 50px 50px;
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.999) 2%, transparent 5%) 0 0 / 40px 50px;
     pointer-events: none; /* Garante que o pseudo-elemento não interfira na interação do usuário */
     z-index: 0;
 }
@@ -104,4 +104,3 @@ body {
     text-decoration: none;
     border-radius: 4px;
 }
-
