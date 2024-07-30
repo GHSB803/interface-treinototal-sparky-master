@@ -8,7 +8,10 @@ function Navegacao() {
             <img className='treino' src={treino}/> {/* Renderiza a imagem do ícone de treino */}
             <ul> {/* Define uma lista não ordenada */}
                 <li><Link style={{color: "#fff"}} to="/">Home</Link></li> {/* Renderiza um link para a página Home */}
-                <li className="dropdown"> {/* Define um item de lista para o dropdown */}
+                <li><Link style={{color: "#fff"}} to="/assinatura">Planos</Link></li> {/* Renderiza um link para a página Planos */}
+                <li><Link style={{color: "#fff"}} to="/treinos">Treinos</Link></li> {/* Renderiza um link para a página Treinos */}
+                <li><Link style={{color: "#fff"}} to="/assistencia">Acompanhamento</Link></li> {/* Renderiza um link para a página Acompanhamento */}
+                <li className="dropdown" > {/* Define um item de lista para o dropdown */}
                     <span className="droplis">Listas</span> {/* Define o botão do dropdown */}
                     <div className="dropdown-content" style={{minWidth: "116px"}}> {/* Define o conteúdo do dropdown */}
                         <Link style={{color: "#000"}} to="/listaAluno">Aluno</Link> {/* Link para a página de cadastro */}
@@ -17,9 +20,6 @@ function Navegacao() {
                         <Link style={{color: "#000"}} to="/listaExercicio">Exercício</Link> {/* Link para a página de aparelho */}
                     </div>
                 </li>
-                <li><Link style={{color: "#fff"}} to="/assinatura">Planos</Link></li> {/* Renderiza um link para a página Planos */}
-                <li><Link style={{color: "#fff"}} to="/treinos">Treinos</Link></li> {/* Renderiza um link para a página Treinos */}
-                <li><Link style={{color: "#fff"}} to="/assistencia">Acompanhamento</Link></li> {/* Renderiza um link para a página Acompanhamento */}
                 <li className="dropdown"> {/* Define um item de lista para o dropdown */}
                     <span className="dropbtn">Formulários</span> {/* Define o botão do dropdown */}
                     <div className="dropdown-content"> {/* Define o conteúdo do dropdown */}
