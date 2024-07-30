@@ -57,9 +57,9 @@ img {
     top: 0;
     right: 0;
     bottom: 0;
-    left: 75%; /* As bolinhas desaparecem antes da metade da tela */
+    left: 0%; /* As bolinhas desaparecem antes da metade da tela */
     background: 
-        radial-gradient(circle at 50% 50%, rgba(221, 0, 255, 0.999) 2%, transparent 5%) 0 0 / 50px 50px;
+        radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.999) 2%, transparent 5%) 0 0 / 50px 50px;
     pointer-events: none; /* Garante que o pseudo-elemento não interfira na interação do usuário */
     z-index: 0;
 }
